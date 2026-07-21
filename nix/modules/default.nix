@@ -62,7 +62,7 @@ in
       restartIfChanged = true;
 
       serviceConfig = {
-        ExecStart = "${cfg.package}/bin/prometheus-airthing-ble-exporter -serial ${cfg.waveSerialNumber} -address ${cfg.listenAddress}:${cfg.port} -collection ${cfg.collectionDuration}";
+        ExecStart = "${cfg.package}/bin/prometheus-airthing-ble-exporter -serial ${toString cfg.waveSerialNumber} -address ${cfg.listenAddress}:${toString cfg.port} -collection ${cfg.collectionDuration}";
 
         ProtectHostname = true;
         PrivateTmp = !config.boot.isContainer;
