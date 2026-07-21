@@ -58,9 +58,9 @@ in
 
   config = mkIf cfg.enable {
     systemd.services.prometheus-airthings-ble-exporter = {
-      after = [ "network.target" ];
+      after = [ "networking.target" ];
       requires = [ "bluetooth.service" ];
-      wantedBy = [ "default.target" ];
+      wantedBy = [ "multi-user.target" ];
 
       description = "Airthings Wave BLE exporter for prometheus";
       restartIfChanged = true;
