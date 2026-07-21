@@ -24,7 +24,7 @@ func init() {
 func main() {
 	waveSerialNumber := flag.Uint64("serial", 0, "Serial number of the Wave 1 device")
 	collectionDuration := flag.Duration("collection", time.Minute*30, "How often to read data from Wave")
-	listenAddress := flag.String("web.listen-address", ":9456", "Address to listen on for web interface and telemetry")
+	listenAddress := flag.String("address", ":9456", "Address to listen on for web interface and telemetry")
 	metricsPath := flag.String("web.telemetry-path", "/metrics", "Path to expose metrics of the exporter")
 	flag.Parse()
 
