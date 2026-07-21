@@ -23,7 +23,7 @@ in
 
     collectionDuration = mkOption {
       type = types.str;
-      default = "30s";
+      default = "30m";
       description = mdDoc ''
         Go duration for how often to prope the Wave for it's data
       '';
