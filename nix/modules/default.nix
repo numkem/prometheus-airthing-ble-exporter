@@ -61,11 +61,13 @@ in
       description = "Airthing Wave BLE exporter for prometheus";
       restartIfChanged = true;
 
-      serviceConfig.ExecStart = "${cfg.package}/bin/prometheus-airthing-ble-exporter -serial ${cfg.waveSerialNumber} -address ${cfg.listenAddress}:${cfg.port} -collection ${cfg.collectionDuration}";
+      serviceConfig = {
+        ExecStart = "${cfg.package}/bin/prometheus-airthing-ble-exporter -serial ${cfg.waveSerialNumber} -address ${cfg.listenAddress}:${cfg.port} -collection ${cfg.collectionDuration}";
 
-      ProtectHostname = true;
-      PrivateTmp = !config.boot.isContainer;
-      PrivateUsers = true;
+        ProtectHostname = true;
+        PrivateTmp = !config.boot.isContainer;
+        PrivateUsers = true;
+      };
     };
   };
 }
