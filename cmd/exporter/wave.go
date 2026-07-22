@@ -238,7 +238,7 @@ func parseCurrentValues(raw []byte) (*CurrentValues, error) {
 	return &CurrentValues{
 		Timestamp: time.Date(
 			int(year), time.Month(month), int(day),
-			int(hour), int(minute), int(second), 0, time.Local,
+			int(hour), int(minute), int(second), 0, time.UTC,
 		),
 		Humidity:    float64(humidity) / 100.0,
 		Temperature: float64(temperature) / 100.0,
