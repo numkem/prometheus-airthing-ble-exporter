@@ -72,7 +72,7 @@ in
       restartIfChanged = true;
 
       serviceConfig = {
-        ExecStart = "${cfg.package}/bin/prometheus-airthings-ble-exporter -serial ${toString cfg.waveSerialNumber} -address ${cfg.listenAddress}:${toString cfg.port} -collection ${cfg.collectionDuration} -retries ${cfg.retries}";
+        ExecStart = "${cfg.package}/bin/prometheus-airthings-ble-exporter -serial ${toString cfg.waveSerialNumber} -address ${cfg.listenAddress}:${toString cfg.port} -collection ${cfg.collectionDuration} -retries ${toString cfg.retries}";
         Restart = "always";
 
         LockPersonality = true;
