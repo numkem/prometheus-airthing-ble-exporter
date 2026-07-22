@@ -47,6 +47,12 @@ in
       '';
     };
 
+    retries = lib.mkOption {
+      type = lib.types.ints.unsigned;
+      default = 3;
+      description = "The number of retries contacting the Wave device.";
+    };
+
     waveSerialNumber = mkOption {
       type = types.ints.unsigned;
       default = 0;
@@ -66,7 +72,7 @@ in
       restartIfChanged = true;
 
       serviceConfig = {
-        ExecStart = "${cfg.package}/bin/prometheus-airthings-ble-exporter -serial ${toString cfg.waveSerialNumber} -address ${cfg.listenAddress}:${toString cfg.port} -collection ${cfg.collectionDuration}";
+        ExecStart = "${cfg.package}/bin/prometheus-airthings-ble-exporter -serial ${toString cfg.waveSerialNumber} -address ${cfg.listenAddress}:${toString cfg.port} -collection ${cfg.collectionDuration} -retries ${cfg.retries}";
         Restart = "always";
 
         LockPersonality = true;
